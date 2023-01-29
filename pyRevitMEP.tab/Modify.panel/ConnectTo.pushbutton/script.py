@@ -58,6 +58,10 @@ def connect_to():
             import time
             time.sleep(2)
 
+    if target_element == moved_element:
+        forms.WarningBar(title="Oops, it looks like you've selected the same object twice.")
+        return True
+
     # Get associated unused connectors
     moved_connector = get_connector_closest_to(get_connector_manager(moved_element).UnusedConnectors,
                                                moved_point)
