@@ -58,8 +58,9 @@ def connect_to():
             import time
             time.sleep(2)
 
-    if target_element == moved_element:
-        forms.WarningBar(title="Oops, it looks like you've selected the same object twice.")
+    # Check if user has selected same element twice to prevent errors and unintended movements
+    if target_element.Id == moved_element.Id:
+        rpw.ui.forms.Alert("Oops, it looks like you've selected the same object twice.", header='Attribute Error')
         return True
 
     # Get associated unused connectors
